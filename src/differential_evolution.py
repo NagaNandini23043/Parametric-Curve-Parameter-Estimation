@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 from scipy.optimize import differential_evolution
 import time
 
-
-# =====================================================
-# Load Dataset
-# =====================================================
-
 data = pd.read_csv("xy_data.csv")
 
 actual_x = data.iloc[:, 0].values
@@ -16,13 +11,7 @@ actual_y = data.iloc[:, 1].values
 
 n = len(actual_x)
 
-# Uniformly sampled t
 t = np.linspace(6, 60, n)
-
-
-# =====================================================
-# Parametric Curve
-# =====================================================
 
 def generate_curve(theta_deg, M, X):
 
@@ -46,11 +35,6 @@ def generate_curve(theta_deg, M, X):
 
     return x, y
 
-
-# =====================================================
-# Objective Function
-# =====================================================
-
 history = []
 
 def objective(params):
@@ -68,18 +52,13 @@ def objective(params):
 
     return loss
 
-
-# =====================================================
-# Differential Evolution
-# =====================================================
-
 bounds = [
 
-    (0, 50),          # theta
+    (0, 50),     
 
-    (-0.05, 0.05),    # M
+    (-0.05, 0.05),   
 
-    (0, 100)          # X
+    (0, 100)        
 
 ]
 
@@ -111,11 +90,6 @@ result = differential_evolution(
 
 elapsed = time.time() - start
 
-
-# =====================================================
-# Best Parameters
-# =====================================================
-
 best_theta, best_M, best_X = result.x
 
 print("\n========= DIFFERENTIAL EVOLUTION =========\n")
@@ -129,11 +103,6 @@ print(f"X     : {best_X:.6f}")
 print(f"\nBest L1 Distance : {result.fun:.8f}")
 
 print(f"Execution Time : {elapsed:.4f} seconds")
-
-
-# =====================================================
-# Plot Predicted Curve
-# =====================================================
 
 pred_x, pred_y = generate_curve(
     best_theta,
@@ -172,11 +141,6 @@ plt.legend()
 plt.tight_layout()
 
 plt.show()
-
-
-# =====================================================
-# Convergence Plot
-# =====================================================
 
 best_history = np.minimum.accumulate(history)
 
