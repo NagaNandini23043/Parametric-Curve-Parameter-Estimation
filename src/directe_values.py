@@ -2,8 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-
 data = pd.read_csv("xy_data.csv")
 
 actual_x = data.iloc[:, 0].values
