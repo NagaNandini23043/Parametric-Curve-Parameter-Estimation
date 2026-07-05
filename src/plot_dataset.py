@@ -1,15 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-# Load the dataset
 data = pd.read_csv("xy_data.csv")
 
-# Extract x and y coordinates
 x = data.iloc[:, 0]
 y = data.iloc[:, 1]
 
-# Create the plot
 plt.figure(figsize=(8, 6))
 
 plt.scatter(
