@@ -3,14 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# ==========================================================
-# Load Dataset
-# ==========================================================
-
 def load_data(csv_path):
-    """
-    Load x and y coordinates from the CSV file.
-    """
     data = pd.read_csv(csv_path)
 
     x_actual = data.iloc[:, 0].values
@@ -19,14 +12,7 @@ def load_data(csv_path):
     return x_actual, y_actual
 
 
-# ==========================================================
-# Generate Parametric Curve
-# ==========================================================
-
 def generate_curve(theta_deg, M, X, t):
-    """
-    Generate x and y coordinates using the parametric equation.
-    """
 
     theta = np.deg2rad(theta_deg)
 
@@ -45,21 +31,10 @@ def generate_curve(theta_deg, M, X, t):
     return x, y
 
 
-# ==========================================================
-# L1 Distance
-# ==========================================================
-
 def l1_distance(actual_x, actual_y, pred_x, pred_y):
-    """
-    Mean L1 distance between predicted and actual points.
-    """
 
     return np.mean(np.abs(actual_x - pred_x) + np.abs(actual_y - pred_y))
 
-
-# ==========================================================
-# Random Search
-# ==========================================================
 
 def random_search(
         actual_x,
@@ -67,9 +42,6 @@ def random_search(
         iterations=10000,
         random_seed=42
 ):
-    """
-    Estimate theta, M and X using Random Search.
-    """
 
     np.random.seed(random_seed)
 
@@ -101,10 +73,6 @@ def random_search(
 
     return best_params, best_loss, history
 
-
-# ==========================================================
-# Plot Result
-# ==========================================================
 
 def plot_curve(actual_x, actual_y, theta, M, X):
 
@@ -138,11 +106,6 @@ def plot_curve(actual_x, actual_y, theta, M, X):
 
     plt.show()
 
-
-# ==========================================================
-# Plot Convergence
-# ==========================================================
-
 def plot_convergence(history):
 
     best = np.minimum.accumulate(history)
@@ -158,11 +121,6 @@ def plot_convergence(history):
     plt.grid(True)
 
     plt.show()
-
-
-# ==========================================================
-# Run Example
-# ==========================================================
 
 if __name__ == "__main__":
 
