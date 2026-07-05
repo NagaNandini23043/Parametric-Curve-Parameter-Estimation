@@ -3,25 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# ======================================================
-# Load Dataset
-# ======================================================
 
 data = pd.read_csv("xy_data.csv")
 
 actual_x = data.iloc[:, 0].values
 actual_y = data.iloc[:, 1].values
 
-# Number of points
 n = len(actual_x)
 
-# Parameter t
 t = np.linspace(6, 60, n)
 
-
-# ======================================================
-# Known Parameters
-# ======================================================
 
 theta_deg = 30
 M = 0.03
@@ -29,10 +20,6 @@ X = 55
 
 theta = np.deg2rad(theta_deg)
 
-
-# ======================================================
-# Generate Predicted Curve
-# ======================================================
 
 pred_x = (
     t * np.cos(theta)
@@ -50,11 +37,6 @@ pred_y = (
     * np.cos(theta)
 )
 
-
-# ======================================================
-# Compute L1 Distance
-# ======================================================
-
 l1_distance = np.mean(
     np.abs(actual_x - pred_x)
     + np.abs(actual_y - pred_y)
@@ -68,10 +50,6 @@ print(f"M     : {M}")
 print(f"X     : {X}")
 print(f"\nMean L1 Distance : {l1_distance:.10f}")
 
-
-# ======================================================
-# Plot
-# ======================================================
 
 plt.figure(figsize=(8,6))
 
