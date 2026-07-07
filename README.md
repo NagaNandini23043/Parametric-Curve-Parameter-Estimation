@@ -16,13 +16,14 @@ Instead of solving the equations analytically, the problem is formulated as a gl
 
 The parametric curve is defined as
 
-\[
-x(t)=t\cos(\theta)-e^{M|t|}\sin(0.3t)\sin(\theta)+X
-\]
 
-\[
-y(t)=42+t\sin(\theta)+e^{M|t|}\sin(0.3t)\cos(\theta)
-\]
+$$
+x(t) = t\cos(\theta) - e^{M|t|}\sin(0.3t)\sin(\theta) + X
+$$
+
+$$
+y(t) = 42 + t\sin(\theta) + e^{M|t|}\sin(0.3t)\cos(\theta)
+$$
 
 where the unknown parameters are
 
